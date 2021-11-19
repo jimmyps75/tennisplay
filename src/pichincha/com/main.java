@@ -5,7 +5,7 @@ public class main {
 
     //declaration and instantiation
     public static void main( String[] args ) {
-        String jugador = "";
+        String jugador = " ";
         boolean continuar;
         int jugadorPuntajeA = 0, jugadorPuntajeB = 0;
         int ar[]=new int[3];
