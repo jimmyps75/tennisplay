@@ -1,4 +1,5 @@
 package pichincha.com;
+import javax.swing.*;
 import java.util.Scanner;
 
 public class main {
@@ -13,14 +14,17 @@ public class main {
         Scanner s;
         do {
             s = new Scanner( System.in );
+            //continuar = s.nextBoolean();
+
             System.out.println("escribe el literal si el punto es para el jugador A o Jugador B");
             System.out.println("el punto es para el jugador:");
             jugador = s.nextLine();
 
-            continuar = acumularPuntaje(ar, jugador);
-            System.out.println("continuar:");
 
-            continuar = s.nextBoolean();
+            continuar = acumularPuntaje(ar, jugador);
+            //System.out.println("continuar:");
+
+
 
         }while ( continuar);
 
@@ -35,6 +39,7 @@ public class main {
                 if (ar[0] == 45) {
                     ar[0] = 40;
                 }
+
                 break;
             case "B":
                 ar[1]=ar[1] + 15;
@@ -45,29 +50,65 @@ public class main {
             default:
                 // code block
         }
-
-        System.out.println("puntuacion jugador A: " + ar[0]);
-        System.out.println("puntuacion jugador B: " + ar[1]);
         respuesta = statusPlayers(ar);
+        if (respuesta) {
+                System.out.println("puntuacion jugador A: " + ar[0]);
+                System.out.println("puntuacion jugador B: " + ar[1]);
+        }
         return respuesta;
     }
 
     public static boolean statusPlayers(int[] ar){
 
-        if( (ar[0] == 40) && (ar[1] < 40) ){
-            System.out.println("El jugador A: Win" + ar[0]);
+        if( (ar[0] > 40) && (ar[1] < 40) ){
+            System.out.println("*****El jugador A: Win");
             return false;
         }
         
-        if( (ar[0] < 40) && (ar[1] == 40) ){
-            System.out.println("El jugador B: Win" + ar[1]);
+        if( (ar[0] < 40) && (ar[1] > 40) ){
+            System.out.println("*****El jugador B: Win");
             return false;
         }
 
-        if( (ar[0] == 40) && (ar[1] == 40) ){
-            System.out.println("Los Jugadores estan: Deuce Jugador A:" + ar[0] + "Jugador B:" +ar[1]);
+        if( (ar[0] == 70)){
+            System.out.println("*****El jugador A: Win");
             return false;
         }
+
+        if( (ar[1] == 70)){
+            System.out.println("*****El jugador B: Win");
+            return false;
+        }
+
+
+        if( (ar[0] == 55) && (ar[1] == 55)){
+            ar[0] = 40;
+            ar[1] = 40;
+            System.out.println("****El deuce: A Y b");
+            return true;
+        }
+
+        if( (ar[0] == 55)){
+            // SI ESTA EN VENTAJA
+            System.out.println("******El jugador A: Ventaja");
+            return true;
+        }
+
+        if( (ar[1] == 55)){
+            //SI ESTA EN VENTAJA EL OTRO Y HAGO UN GOL
+            // DEUCE
+            System.out.println("****El jugador B: Ventaja");
+            return true;
+        }
+
+
+        if( (ar[0] == 40) && (ar[1] == 40) ){
+            System.out.println("*****Los Jugadores estan: Deuce Jugador A Y B" );
+
+            return true;
+        }
+
+
         return true;
     }
 
