@@ -8,7 +8,7 @@ public class main {
         String jugador = "";
         boolean continuar;
         int jugadorPuntajeA = 0, jugadorPuntajeB = 0;
-        int ar[]=new int[2];
+        int ar[]=new int[3];
         int a, b, c = 0;
         Scanner s;
         do {
@@ -32,13 +32,15 @@ public class main {
         switch(jugador) {
             case "A":
                 ar[0]=ar[0] + 15;
-                //jugadorPuntajeA = jugadorPuntajeA +15;
-
+                if (ar[0] == 45) {
+                    ar[0] = 40;
+                }
                 break;
             case "B":
                 ar[1]=ar[1] + 15;
-                //jugadorPuntajeB = jugadorPuntajeA +15;
-
+                if (ar[1] == 45) {
+                    ar[1] = 40;
+                }
                 break;
             default:
                 // code block
