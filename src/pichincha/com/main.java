@@ -27,7 +27,7 @@ public class main {
     }
 
     public static boolean acumularPuntaje(int[] ar, String jugador){
-
+        boolean respuesta;
         ar[2]=ar[2] + 1;
         switch(jugador) {
             case "A":
@@ -48,10 +48,28 @@ public class main {
 
         System.out.println("puntuacion jugador A: " + ar[0]);
         System.out.println("puntuacion jugador B: " + ar[1]);
-
-        return true;
+        respuesta = statusPlayers(ar);
+        return respuesta;
     }
 
+    public static boolean statusPlayers(int[] ar){
+
+        if( (ar[0] == 40) && (ar[1] < 40) ){
+            System.out.println("El jugador A: Win" + ar[0]);
+            return false;
+        }
+        
+        if( (ar[0] < 40) && (ar[1] == 40) ){
+            System.out.println("El jugador B: Win" + ar[1]);
+            return false;
+        }
+
+        if( (ar[0] == 40) && (ar[1] == 40) ){
+            System.out.println("Los Jugadores estan: Deuce Jugador A:" + ar[0] + "Jugador B:" +ar[1]);
+            return false;
+        }
+        return true;
+    }
 
 
 }
